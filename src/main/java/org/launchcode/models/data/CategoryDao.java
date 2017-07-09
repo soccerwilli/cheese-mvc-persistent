@@ -2,17 +2,16 @@ package org.launchcode.models.data;
 
 import org.launchcode.models.Category;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.Repository;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
 /**
  * Created by soccerwilli on 7/7/2017.
  */
-public interface CategoryDao {
 
-    @Repository
-    @Transactional
-    public interface CategoryDao extends CrudRepository<Category, Integer> {
-    }
+@Repository
+@Transactional
+public interface CategoryDao extends CrudRepository<Category, Integer> {
+
 }
