@@ -1,11 +1,10 @@
 package org.launchcode.models;
 
-import com.sun.istack.internal.NotNull;
-import javax.validation.constraints.Size;
-
 import javax.persistence.*;
-
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by soccerwilli on 7/7/2017.
@@ -16,14 +15,21 @@ public class Category {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
 
     @NotNull
-    @Size(min = 3, max = 15)
+    @Size (min = 3, max = 15)
     private String name;
 
-    public int getId() {
-        return id;
+    @OneToMany
+    @JoinColumn(name = "category_id")
+    private List<Cheese> cheeses = new ArrayList<>();
+
+    public Category(){
+    }
+
+    public Category (String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -34,10 +40,11 @@ public class Category {
         this.name = name;
     }
 
-    public Category() {}
+    public Integer getId() {
+        return id;
+    }
 
-    public Category(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
-
